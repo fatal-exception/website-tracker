@@ -4,12 +4,17 @@ from lxml import html
 from defaults import target_url
 import hashlib
 from bs4 import BeautifulSoup
+import smtplib
+from email.message import EmailMessage
+import sendgrid_helper
 
 
 def tell_matt(ridley_present):
     if ridley_present:
-        print("Ridley report found!")  #  TODO email
+        sendgrid_helper.send_mail("Ridley report found!")
+        print("Ridley report found!")
     else:
+        sendgrid_helper.send_mail("No Ridley report found")
         print("No Ridley report found")
 
 

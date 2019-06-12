@@ -10,6 +10,7 @@ pylint = "*"
 [packages]
 beautifulsoup4 = "*"
 requests = "*"
+sendgrid = "*"
 
 [requires]
 python_version = "3.7"
