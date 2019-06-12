@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 import requests
-from lxml import html
 from defaults import target_url
-import hashlib
 from bs4 import BeautifulSoup
-import smtplib
-from email.message import EmailMessage
 import sendgrid_helper
 
 
