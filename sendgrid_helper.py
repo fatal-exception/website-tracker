@@ -8,7 +8,7 @@ def send_mail(message):
         from_email='matt@lydiaralph.com',
         to_emails='ralpmat@gmail.com',
         subject='Website tracker',
-        html_content=f'<strong>{message}</strong>')
+        plain_text_content=message)
     try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)
