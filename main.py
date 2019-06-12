@@ -13,12 +13,14 @@ def tell_matt(ridley_present):
     if ridley_present:
         sendgrid_helper.send_mail("Ridley report found!")
         print("Ridley report found!")
+        return True
     else:
         sendgrid_helper.send_mail("No Ridley report found")
         print("No Ridley report found")
+        return False
 
 
-def main():
+def handler(event, context):
     response = requests.get(target_url)
     html = response.text
     soup = BeautifulSoup(html, 'html.parser')
@@ -31,11 +33,11 @@ def main():
         institution_name = title.split("-")[0].rstrip()
         print(institution_name)
         if "Ridley" in institution_name:
-            tell_matt(True)
-            return True
+            return_bool = tell_matt(True)
 
-    tell_matt(False)
+    return_bool = tell_matt(False)
+    return return_bool
 
 
 if __name__ == "__main__":
-    main()
+    handler(None, None)
